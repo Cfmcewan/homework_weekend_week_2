@@ -35,17 +35,20 @@ def test_guest_check_in_new_wallet_total()
   assert_equal(22, @guest.wallet)
 end
 
-def test_guest_has_sufficient_funds_for_check_in_true()
-  @guest.guest_has_sufficient_funds_for_check_in?(@room8.room_price, @name)
-  @room8.guest_checks_in(@name, @room_price)
-  assert_equal(22, @wallet)
-  assert_equal(1, @room8.guest_list)
-  assert_equal(108, @venue1.till)
+def test_sufficient_funds_true_if_enough()
+  assert_equal(true, @guest.sufficient_funds_to_check_in?(@room8.room_price))
 end
 
-def test_guest_has_sufficient_funds_for_check_in_false()
-  @guest2.guest_has_sufficient_funds_for_check_in?(@room8.room_price, @name)
-  assert_equal(false, @guest.wallet < @room8.room_price)
-end
+def test_sufficient_funds_false_if_enough()
+  assert_equal(false, @guest2.sufficient_funds_to_check_in?(@room8.room_price))
+end 
+
+
+
+
+
+
+
+
 
 end

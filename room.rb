@@ -62,8 +62,11 @@ def guest_checks_in(name, room_price)
   remove_room_price_from_wallet(room_price)
 end
 
-
-
-
+def check_fave_song_on_play_list(fave_song)
+  if @song_list.find {|song| song.title == fave_song}
+    return song
+  end
+  return nil
+end
 
 end
